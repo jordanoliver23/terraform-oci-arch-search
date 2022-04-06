@@ -23,6 +23,7 @@ Console menu &rarr; Networking &rarr; Virtual Cloud Networks &rarr; Start VCN Wi
 Custom process:  
 
 “Create VCN” instead of “Start VCN Wizard”, providing your own desired details.  
+NOTE: A IPv6 enabled subnet is not supported due to a limitation with Private Endpoints (PE). This should be resolved later in June 2022
 <br>
 
 ### 3. Create a VM Instance in the public subnet of the VCN
