@@ -42,6 +42,8 @@ For the exercise contained in this tutorial, a Mac and an Oracle Linux instance 
 
 ## 1. Create an OCI Search Service cluster
 
+NOTE: Charges for OCPU, Memory, Block Volume, and Object Storage will incur when the service launches. Also any VMs used to access the cluster endpoints. 
+
 Console menu &rarr; Databases &rarr; OCI Search Service &rarr; Clusters  
 Choose the cluster name and compartment where to create the cluster
 
