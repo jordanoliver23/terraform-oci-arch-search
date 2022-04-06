@@ -90,11 +90,42 @@ curl -O https://raw.githubusercontent.com/oracle-devrel/terraform-oci-arch-searc
 ```  
 The certificate will be downloaded and saved as cert.pem, in your current directory.  
 Note: this certificate is suitable to region us-ashburn-1.
-  
+
+As an alternative, you can just create your own cert. This is a public cert from oracle but not one that's from a trusted authority (e.g. CA)
+Create a cert and store it in the ssh hidden folder under your users directory
+
+-----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAAKCAQEA2y6afR3mPA/I8e2kRLUvsbjtmc8DBFX8anM6bd/4nv4AvNcI
+LW93UEBDNTk2aLw2VBRLeYaht/QfZyP2NTWq7tCleFFyzZoWmPpjmnI7IaMCqUkK
+VpjRDHae3+i5w3VdUWvGeo6AxXg64Jqoen5YevX19MeCPFcnYMLW2iCo2yEXX+8e
+JAx1Wspxil1Bxnx6s7DGulldpnHQ7IiQrQYCqGd56SjY6xSrlMjNby4YLLmOftSU
+9H9RMvmL39i9/CROEcVRb3E6vovfhz246nMrtOkLxOjieu2ztQ2pOswCMxfJcHFP
+NrQk5RvIUw+LykuQOHVyvnUzy7KFsDAmhEryZwIDAQABAoIBAAXRTVlvzzod4yQE
+vjzyoDLz6R6Rf4+AZsQ+jbj33mX98PASNw3ZrQ2MvxvtClQqVrjRlxVBLQ6wZJr8
+ud68r25KTHIOm2D4q4vg7X7edFJWvM3YefVFdhsCFQJ1b2TQOytblHeRS7qyD8IB
+aOJjcx7EY4RdPUgzugBX+5Lrlf/G6vwZK1GrsdJA5pIHgSrYHYpOYlf3CnI6r7On
+Wl7hX0ye8YY/1iQWCdFxM3JE4BkmkZftVcdrrNtdTBRYdV7ZAhFa9eFFz/pmPNb6
+PknADclVfuSNfUTKOIb+6etm9q6IekKU6whZzS5U+1Bb+hnp8FGfzP4mWMerqDmP
+hHhuwv0CgYEA+UhRmjvQ/zKBXSB7w/aCNfz8ilqF452q6K4cIyvncIvUkKrzPbf/
+oD4ERgP2xYXQng/G+wFHitPYF+xob7gEeNbjMFcrKnfGMYWZi3P88/y2iBKvaeZq
+phDsbMYnEt0T5LEzxpn4336cEPRFqhWhwyST9ybIC7URI/In3yOkNxUCgYEA4Rai
+01QIBvqhaCm0SB460aOoJV1XWlpvpXPpS/04ci1QvMUJUxkndFjAbLZMYzRjWP9v
+qLPxKqlH8iCKUqLYZRuIP4ZBBd6xMCU+ceWryBvJ/cP5xfMkmQ03i3BR61zon8ot
+n2JBoafRX5uGx04Ur1ceimPliFWN5bh6VHufYosCgYBTvAUdJ8aWUmK943Fva9hl
+RiuWVb3vrUCBlCqDbfX6Ch5G0gWOz8WgD/Tjh+VWiBKBZY9TNSTQ70QBFTonfMqT
+xKrfzAgF5eG/NL9U5osrcdHmd1BQ5EMisUCZcR4i6fwKr7NSnNnKSP8nesYD0exa
+XmkNdgtwU0wEpQzbmV9J2QKBgQCgpX00gsbv5DUKmKk4x4qHUNyTPlk3/U+tsFqT
+h3if1MPI1n/fNRa5rRY5AKroKt21CSnyJ+s53XOh1aOjcuIq10mYvQLvY47mo847
+kAXYXiz91r8PjodSTOKVvGZbKwZD9RI2rPPWomWGbQP2fz24Ht+HOeD6OsV5bP6y
+CUEqHQKBgGZZ0wKovepNPid7hN0gBQ2pkg0KaWwagSm87bzsmMhIeK2k+N3ufna1
+wB3RDqrNsZGW/emUdI1ekcu/A2EcSSrDlyjXgC0rgv/7P7WHvfu74AiHT301xgMw
+P6ca3blziswmBFftSmkYMPW07YkTrERN3kK11pVYYcDjD8qRt43B
+-----END RSA PRIVATE KEY-----
 
 ## 4.  Test the connection to OCI Search Service – OpenSearch endpoint
 
 ### 4.1. From inside the created VM instance  
+NOTE: This is done just to validate access from your VM to the OS cluster
   
 a.  Connect to the instance via SSH:  
 ```
