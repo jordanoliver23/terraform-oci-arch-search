@@ -94,6 +94,7 @@ Note: this certificate is suitable to region us-ashburn-1.
 As an alternative, you can just create your own cert. This is a public cert from oracle but not one that's from a trusted authority (e.g. CA)
 Create a cert and store it in the ssh hidden folder under your users directory
 
+```
 -----BEGIN RSA PRIVATE KEY-----
 MIIEowIBAAKCAQEA2y6afR3mPA/I8e2kRLUvsbjtmc8DBFX8anM6bd/4nv4AvNcI
 LW93UEBDNTk2aLw2VBRLeYaht/QfZyP2NTWq7tCleFFyzZoWmPpjmnI7IaMCqUkK
@@ -121,6 +122,7 @@ CUEqHQKBgGZZ0wKovepNPid7hN0gBQ2pkg0KaWwagSm87bzsmMhIeK2k+N3ufna1
 wB3RDqrNsZGW/emUdI1ekcu/A2EcSSrDlyjXgC0rgv/7P7WHvfu74AiHT301xgMw
 P6ca3blziswmBFftSmkYMPW07YkTrERN3kK11pVYYcDjD8qRt43B
 -----END RSA PRIVATE KEY-----
+```
 
 ## 4.  Test the connection to OCI Search Service – OpenSearch endpoint
 
