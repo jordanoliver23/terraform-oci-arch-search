@@ -133,6 +133,13 @@ a.  Connect to the instance via SSH:
 ```
 ssh -i ~/.ssh/id_rsa_opensearch.key opc@<your_VM_instance_public_IP>
 ```
+JORDAN:
+```
+ssh -i ~/.ssh/id_rsa_opensearch.key opc@10.0.154.88
+```
+
+
+
 b.  Run one of the following commands:
 ```
 curl https://amaaaaaanlc5nbya44qen6foty3gyu7ihpo22mzmtjw5ixtcjgetjcqwipuq.opensearch.us-ashburn-1.oci.oracleiaas.com:9200 --cacert cert.pem
