@@ -313,6 +313,10 @@ curl -X GET "https://localhost:9200/oci/_search?q=title:Kubernetes&pretty" --ins
 ```
 https://localhost:9200/oci/_search?q=title:Kubernetes&pretty
 ```
+### 6.4. From your browser w/o port forwarding needed 
+```
+https://129.153.146.243/api/search?q=text:oci&pretty
+```
 
 Refer to OpenSearch or ElasticSearch tutorials for more on query syntax.  
   
