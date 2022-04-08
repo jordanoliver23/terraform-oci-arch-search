@@ -138,8 +138,6 @@ JORDAN:
 ssh -i ~/.ssh/id_rsa_opensearch.key opc@10.0.154.88
 ```
 
-
-
 b.  Run one of the following commands:
 ```
 curl https://amaaaaaanlc5nbya44qen6foty3gyu7ihpo22mzmtjw5ixtcjgetjcqwipuq.opensearch.us-ashburn-1.oci.oracleiaas.com:9200 --cacert cert.pem
@@ -148,6 +146,16 @@ curl https://amaaaaaanlc5nbya44qen6foty3gyu7ihpo22mzmtjw5ixtcjgetjcqwipuq.opense
 curl https://10.1.1.190:9200 --insecure 
 # OpenSearch private IP example
 ```
+JORDAN:
+```
+curl https://amaaaaaakztjrmiaca3oyxmzegtn25lfh77dmc6heo65r647cc4u3qvz4ewa.opensearch.us-ashburn-1.oci.oracleiaas.com:9200 --cacert cert.pem
+# OpenSearch API endpoint example, with certificate
+
+curl https://10.0.216.169:9200 --insecure 
+# OpenSearch private IP example
+```
+
+
 ## 4.2.  From your local machine, through port forwarding
 ## (alternative to 4.1.)
 
@@ -156,6 +164,10 @@ close the Terminal afterwards, for the connection to remain in place.
 
 ```
 ssh -C -v -t -L 127.0.0.1:5601:<your_opensearch_dashboards_private_IP>:5601 -L 127.0.0.1:9200:<your_opensearch_private_IP>:9200 opc@<your_VM_instance_public_IP> -i <path_to_your_private_key>
+```
+JORDAN
+```
+ssh -C -v -t -L 127.0.0.1:5601:10.0.211.1:5601 -L 127.0.0.1:9200:10.0.216.169:9200 opc@129.158.214.157 -i ~/.ssh/ssh-key-2022-03-14.key
 ```
 
 b. Open a new Terminal window and run the following command:
@@ -217,19 +229,54 @@ curl -XPUT "https://<your_opensearch_private_IP>:9200/oci" -H 'Content-Type: app
 }
 '
 ```
+JORDAN
+```
+curl -XPUT "https://10.0.216.169:9200/oci" -H 'Content-Type: application/json' --insecure -d' 
+{
+  "mappings": {
+    "properties": {
+    "id": {"type": "integer"},
+    "category": {"type": "keyword"},
+    "text": {"type": "text"},
+    "title": {"type": "text"},
+    "url": {"type": "text"}
+    }
+  }
+}
+'
+```
+
+
 
 ### 5.3. Push the data set
 
 ```
 curl -H 'Content-Type: application/x-ndjson' -XPOST "https://<your_opensearch_private_IP>:9200/oci/_bulk?pretty" --data-binary @OCI_services.json --insecure
 ```
+JORDAN
+```
+curl -H 'Content-Type: application/x-ndjson' -XPOST "https://10.0.216.169:9200/oci/_bulk?pretty" --data-binary @OCI_services.json --insecure
+```
 
 ### 5.4. check your indices
 
 ```
 curl "https://amaaaaaanlc5nbya44qen6foty3gyu7ihpo22mzmtjw5ixtcjgetjcqwipuq.opensearch.us-ashburn-1.oci.oracleiaas.com:9200/_cat/indices" --cacert cert.pem
-# OpenSearch API endpoint example, with certificate
 ```
+### 5.4.a other operations to delete existing indicies (if needed)
+```
+curl -XDELETE "https://amaaaaaanlc5nbya44qen6foty3gyu7ihpo22mzmtjw5ixtcjgetjcqwipuq.opensearch.us-ashburn-1.oci.oracleiaas.com:9200/shakespeare" –insecure
+```
+```
+curl -XDELETE "https://amaaaaaanlc5nbya44qen6foty3gyu7ihpo22mzmtjw5ixtcjgetjcqwipuq.opensearch.us-ashburn-1.oci.oracleiaas.com:9200/oci" –insecure
+```
+
+
+# OpenSearch API endpoint example, with certificate
+
+JORDAN
+```
+curl "https://amaaaaaanlc5nbya44qen6foty3gyu7ihpo22mzmtjw5ixtcjgetjcqwipuq.opensearch.us-ashburn-1.oci.oracleiaas.com:9200/_cat/indices" --cacert cert.pem
 
 OR 
 
@@ -244,6 +291,11 @@ curl -X GET "https://10.0.1.190:9200/_cat/indices" --insecure
 ### 6.1. From the VM instance shell:
 ```
 curl -X GET "https://amaaaaaanlc5nbya44qen6foty3gyu7ihpo22mzmtjw5ixtcjgetjcqwipuq.opensearch.us-ashburn-1.oci.oracleiaas.com:9200/oci/_search?q=title:Kubernetes&pretty" --cacert cert.pem
+# OpenSearch API endpoint example, with certificate
+```
+JORDAN:
+```
+curl -X GET "https://amaaaaaakztjrmiaca3oyxmzegtn25lfh77dmc6heo65r647cc4u3qvz4ewa.opensearch.us-ashburn-1.oci.oracleiaas.com:9200/oci/_search?q=title:Kubernetes&pretty" --cacert cert.pem
 # OpenSearch API endpoint example, with certificate
 ```
 
@@ -271,6 +323,10 @@ From your local machine, through port forwarding
 (Ignore this step if you’ve executed it above and the connection is still open):
 ```
 ssh -C -v -t -L 127.0.0.1:5601:<your_opensearch_dashboards_private_IP>:5601 -L 127.0.0.1:9200:<your_opensearch_private_IP>:9200 opc@<your_instance_public_ip> -i <path_to_your_private_key>
+```
+JORDAN:
+```
+ssh -C -v -t -L 127.0.0.1:5601:10.0.211.1:5601 -L 127.0.0.1:9200:10.0.211.1:9200 opc@129.158.214.157 -i ~/.ssh/ssh-key-2022-03-14.key
 ```
 Access <https://localhost:5601> in a browser of your choice.  
 Currently, there will be a warning of the kind "your connection is not private", depending on the browser. Choose the option which allows you to proceed anyway. After that, you should see the screen below.  
@@ -302,3 +358,9 @@ c.  In Buckets, click ‘Add’ &rarr; Split slices, provide the parameters
     as below and click ‘Update’
 
 <img src=".//media/image12.png" style="width:6.26806in;height:3.52778in"/>
+
+
+HELPFUL LINK
+```
+https://localhost:9200/opensearch_dashboards_sample_data_ecommerce/_search?q=*:*&pretty
+```
